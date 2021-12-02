@@ -1,7 +1,10 @@
 //! Stakes serve as a cache of stake and vote accounts to derive
 //! node stakes
 use {
-    crate::vote_account::{VoteAccount, VoteAccounts, VoteAccountsHashMap},
+    crate::{
+        stake_history::StakeHistory,
+        vote_account::{VoteAccount, VoteAccounts, VoteAccountsHashMap},
+    },
     rayon::{
         iter::{IntoParallelRefIterator, ParallelIterator},
         ThreadPool,
@@ -14,7 +17,6 @@ use {
             self,
             state::{Delegation, StakeActivationStatus, StakeState},
         },
-        stake_history::StakeHistory,
     },
     solana_stake_program::stake_state,
     solana_vote_program::vote_state::VoteState,
